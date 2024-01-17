@@ -14,7 +14,6 @@
         "outputPath": "dist/apps/user-app-server",
         "main": "apps/user-app-server/src/main.ts",
         "tsConfig": "apps/user-app-server/tsconfig.app.json",
-        "assets": ["apps/user-app-server/src/assets"],
         "webpackConfig": "apps/user-app-server/webpack.config.js"
       },
       "configurations": {

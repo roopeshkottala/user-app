@@ -1,2 +1,2 @@
 export * from './lib/shared';
-export * from './lib/user.interface';
+export * from './interfaces/user.interface';

@@ -2,13 +2,13 @@
 import { Route, Routes } from 'react-router-dom';
 
 import { getInfo } from './getInfo';
-import { User } from '@user-app/shared';
+import { IUser } from '@user-app/shared';
 
 function Home() {
   getInfo().then((val) => {
     console.info('i got the resp from api', val);
   });
-  const d: User = { firstName: 'test', lastName: 't', email: 'aa' };
+  const d: IUser = { firstName: 'test', lastName: 't', email: 'aa' };
 
   return <h1>Test home page {d.firstName}</h1>;
 }
