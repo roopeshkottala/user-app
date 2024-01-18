@@ -2,6 +2,7 @@
 import { userServices } from '../Services/users.service';
 import { Request, Response } from 'express';
 import { UserSchemaValidate } from '../Schema/user';
+import { userValidation } from '@user-app/shared';
 
 class userController {
   //add user controller
@@ -12,10 +13,12 @@ class userController {
       email: req.body.email,
     };
     //validating the request
-    const { error, value } = UserSchemaValidate.validate(data);
+    const [isError, error] = userValidation(data);
+    const { value } = UserSchemaValidate.validate(data);
 
-    if (error) {
-      res.send(error.message);
+    console.log('roopesh', data, isError, error);
+    if (isError) {
+      res.status(400).send(error);
     } else {
       //call the create user function in the service and pass the data from the request
       const post = await userServices.createUser(value);
