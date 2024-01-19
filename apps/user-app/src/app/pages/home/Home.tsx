@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Link } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 const Home: React.FC = () => {
@@ -8,7 +8,12 @@ const Home: React.FC = () => {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-            <Typography variant="h6" color="text.primary" align="center">
+            <Typography
+              variant="h6"
+              color="text.primary"
+              align="center"
+              data-testid="home-cotent"
+            >
               Hello, This is a test application,Created by Roopesh K.!
             </Typography>
           </Paper>

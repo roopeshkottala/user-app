@@ -32,7 +32,7 @@ function UsersList() {
                 {(error as any)?.message}
               </Typography>
             )}
-            {status === 'success' && data.length === 0 && (
+            {status === 'success' && data.length <= 0 && (
               <Typography variant="h6" color="text.secondary" align="center">
                 No Users found!&nbsp;&nbsp;&nbsp;
                 <Link color="inherit" href="/user">

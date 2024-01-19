@@ -3,7 +3,6 @@ import TextField from '@mui/material/TextField';
 import {
   Alert,
   Box,
-  Button,
   Container,
   Dialog,
   DialogActions,
@@ -12,6 +11,7 @@ import {
   DialogTitle,
   Paper,
 } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 import Title from '../../components/Title';
 import { IUser, userValidation } from '@user-app/shared';
 import { useState } from 'react';
@@ -25,6 +25,7 @@ interface ISaveConfirmPoupUpContent {
 }
 
 export default function UserAdd() {
+  const [loading, setLoading] = useState(false);
   const [inputFields, setInputFields] = useState<IUser>({
     firstName: '',
     lastName: '',
@@ -58,6 +59,7 @@ export default function UserAdd() {
     },
     {
       onSuccess: (resp) => {
+        setLoading(false);
         setSaveConfirmPoupUpContent({
           isOpen: true,
           details: `User '${inputFields.firstName} ${inputFields.lastName}' added`,
@@ -70,6 +72,7 @@ export default function UserAdd() {
           details: (error as any)?.message,
           type: 'error',
         });
+        setLoading(false);
       },
     }
   );
@@ -79,6 +82,7 @@ export default function UserAdd() {
     if (isError) {
       setInputFieldsError(error);
     } else {
+      setLoading(true);
       mutation.mutate({
         firstName: inputFields.firstName,
         lastName: inputFields.lastName,
@@ -156,15 +160,16 @@ export default function UserAdd() {
           </Grid>
         </Grid>
         <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button
+          <LoadingButton
             variant="contained"
             onClick={() => {
               handleSave();
             }}
             sx={{ mt: 3, ml: 1 }}
+            loading={loading}
           >
             Save
-          </Button>
+          </LoadingButton>
         </Box>
       </Paper>
       <Dialog open={saveConfirmPoupUpContent.isOpen} fullWidth={true}>
@@ -181,14 +186,14 @@ export default function UserAdd() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
+          <LoadingButton
             autoFocus
             onClick={() => {
               handleSaveConfirmPoupUpClose();
             }}
           >
-            Ok
-          </Button>
+            Close
+          </LoadingButton>
         </DialogActions>
       </Dialog>
     </Container>
