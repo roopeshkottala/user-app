@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
+const mongoServer = process.env.MONGO_SERVER_URL
+  ? process.env.MONGO_SERVER_URL
+  : 'localhost';
 export const mongoDb = mongoose
-  .connect('mongodb://localhost:27017/user_app')
+  .connect(`mongodb://${mongoServer}:27017/user_app`)
   .then(
     (res) => {
       if (res) {
