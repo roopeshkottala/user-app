@@ -1,10 +1,12 @@
 # UserApp
 
-✨ **This is a test project. Created byb Roopesh K** ✨
+✨ **This is a test project. Created by Roopesh K** ✨
 
 ## Install the app locally
 
-To start locally run `npm install.
+```
+npm install
+```
 
 ## Start the app locally
 
@@ -26,7 +28,7 @@ nx run shared:test
 
 ## Running E2E
 
-To execute back end:
+To execute back end e2e:
 
 ```
 npx nx run user—app-server-e2e:e2e
@@ -34,7 +36,7 @@ npx nx run user—app-server-e2e:e2e
 
 ## Dockerizing the application
 
-Execute below two commands:
+Execute the below two commands:
 
 ```
 docker build . -t user-app-base-image:nx-base
